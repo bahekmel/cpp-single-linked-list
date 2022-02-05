@@ -1,0 +1,3 @@
+/Users/ivanvolkov/CLionProjects/cpp-single-linked-list/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/ivanvolkov/CLionProjects/cpp-single-linked-list/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/ivanvolkov/CLionProjects/cpp-single-linked-list/cmake-build-debug/CMakeFiles/cpp_single_linked_list.dir

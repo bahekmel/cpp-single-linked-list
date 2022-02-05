@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/ivanvolkov/CLionProjects/cpp-single-linked-list/single-linked-list/main.cpp
+cassert
+-
+single-linked-list.h
+/Users/ivanvolkov/CLionProjects/cpp-single-linked-list/single-linked-list/single-linked-list.h
+
+/Users/ivanvolkov/CLionProjects/cpp-single-linked-list/single-linked-list/single-linked-list.h
+algorithm
+-
+cassert
+-
+cstddef
+-
+iterator
+-
+string
+-
+utility
+-
+
