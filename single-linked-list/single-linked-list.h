@@ -6,6 +6,7 @@
 #include <iterator>
 #include <string>
 #include <utility>
+#include <vector>
 
 template<typename Type>
 class SingleLinkedList {
@@ -24,18 +25,19 @@ public:
 
 	SingleLinkedList() = default;
 
-	template<typename It>
-	void Assign(const It begin, const It end) {
-		assert(size_ == 0 && head_.next_node == nullptr);
-		SingleLinkedList<Type> tmp1;
-		SingleLinkedList<Type> tmp2;
-		for (It i = begin; i != end; ++i) {
-			tmp1.PushFront(*i);
+
+	template<typename InputIterator>
+	void Assign(InputIterator from, InputIterator to) {
+		SingleLinkedList<Type> tmp;
+		Node **node_ptr = &tmp.head_.next_node;
+		while (from != to) {
+			assert(*node_ptr == nullptr);
+			*node_ptr = new Node(*from, nullptr);
+			++tmp.size_;
+			node_ptr = &((*node_ptr)->next_node);
+			++from;
 		}
-		for (auto it = tmp1.begin(); it != tmp1.end(); ++it) {
-			tmp2.PushFront(*it);
-		}
-		swap(tmp2);
+		swap(tmp);
 	}
 
 	SingleLinkedList(std::initializer_list<Type> values) {
@@ -77,7 +79,7 @@ public:
 	}
 
 	void Clear() noexcept {
-		if (size_ > 1) {
+		if (size_ > 1 || head_.next_node != nullptr) {
 			for (int i = 0; i < size_; ++i) {
 				if (head_.next_node != nullptr) {
 					Node *new_head = head_.next_node->next_node;
@@ -205,6 +207,7 @@ public:
 	}
 
 	Iterator InsertAfter(ConstIterator pos, const Type& value) {
+		assert(pos.node_ != nullptr);
 		if (pos.node_->next_node == head_.next_node) {
 			PushFront(value);
 			return Iterator{head_.next_node};
